@@ -1,0 +1,37 @@
+###
+### Datendifferenz zwischen zwei Datums
+### ===================================
+### von Manfred Lagler - regall
+###  
+import tkinter as tk
+from tkinter import messagebox
+from datetime import datetime
+
+root = tk.Tk()
+root.title("Alter Rechner")
+
+label_birthdate = tk.Label(root, text="Geburtsdatum (YYYY-MM-DD):", foreground="red", background="yellow")
+entry_birthdate = tk.Entry(root)
+label_birthdate.pack()
+entry_birthdate.pack()
+
+label_today = tk.Label(root, text="Heutiges Datum (YYYY-MM-DD):", foreground="red", background="yellow")
+entry_today = tk.Entry(root)
+label_today.pack()
+entry_today.pack()
+
+def calculate_age():
+    birthdate = datetime.strptime(entry_birthdate.get(), "%Y-%m-%d")
+    today = datetime.strptime(entry_today.get(), "%Y-%m-%d")
+    age = today - birthdate
+
+    days = age.days
+    hours, remainder = divmod(age.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    messagebox.showinfo("Ergebnis", f"Das Alter beträgt {days} Tage, {hours} Stunden, {minutes} Minuten und {seconds} Sekunden.")
+
+button_calculate = tk.Button(root, text="Alter berechnen", command=calculate_age)
+button_calculate.pack()
+
+root.mainloop()
