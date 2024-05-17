@@ -1,0 +1,33 @@
+### BogenGrad,-minuten, -sekunden in Grad (dezimal) umrechnen
+### von Manfred Lagler - regall
+### ===========================
+def dms_to_decimal(degrees, minutes, seconds):
+    """
+    Konvertiert Winkel in Grad, Minuten und Sekunden in dezimale Grad.
+    
+    :param degrees: Bogengrade (int oder float)
+    :param minutes: Bogenminuten (int oder float)
+    :param seconds: Bogensekunden (int oder float)
+    :return: Dezimalgrad (float)
+    """
+    decimal_degrees = degrees + (minutes / 60) + (seconds / 3600)
+    return decimal_degrees
+
+def main():
+    # Benutzereingabe
+    print("Bitte geben Sie den Winkel in Grad, Minuten und Sekunden ein.")
+    
+    degrees = float(input("Grad: "))
+    minutes = float(input("Minuten: "))
+    seconds = float(input("Sekunden: "))
+    
+    # Umwandlung in dezimale Grad
+    decimal_degrees = dms_to_decimal(degrees, minutes, seconds)
+    
+    # Ausgabe
+    print(f"{degrees}° {minutes}' {seconds}'' entspricht {decimal_degrees:.6f}° in dezimalen Grad.")
+
+if __name__ == "__main__":
+    main()
+
+
